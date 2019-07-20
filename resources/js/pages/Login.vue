@@ -21,7 +21,7 @@
 				<label for="login-email">
 					Email
 				</label>
-				<input type="text" class="form__item" id="login-email" v-model="loginForm.email">
+				<input type="email" class="form__item" id="login-email" v-model="loginForm.email">
 				<label for="login-password">Password</label>
 				<input type="password" class="form__item" id="login-password" v-model="loginForm.password">
 				<div class="form__button">
@@ -71,8 +71,9 @@ export default {
 		}
 	},
 	methods: {
-		login () {
-			console.log(this.loginForm)
+		async login () {
+			await this.$store.dispatch('auth/login', this.loginForm)
+			this.$router.push('/')
 		},
 		async register () {
 			await this.$store.dispatch('auth/register', this.registerForm)
