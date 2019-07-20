@@ -21,18 +21,34 @@
 				<label for="login-email">
 					Email
 				</label>
-				<input type="text" class="form_item" id="login-email" v-model="loginForm.email">
+				<input type="text" class="form__item" id="login-email" v-model="loginForm.email">
 				<label for="login-password">Password</label>
-				<input type="password" class="form_item" if="login-password" v-model="loginForm.password">
+				<input type="password" class="form__item" id="login-password" v-model="loginForm.password">
 				<div class="form__button">
-					<button type="submit" clas="button button--inverse">
+					<button type="submit" class="button button--inverse">
 						login
 					</button>
 				</div>
 			</form>
 		</div>
 		<div class="panel" v-show="tab === 2">
-			Register Form
+			<form class="form" @submit.prevent="register">
+				<label for="username">
+					Name
+				</label>
+				<input type="text" class="form__item" id="username" v-model="registerForm.name">
+				<label for="email">Email</label>
+				<input type="email" class="form__item" id="email" v-model="registerForm.email">
+				<label for="password">Password</label>
+				<input type="password" class="form__item" id="password" v-model="registerForm.password">
+				<label for="password-confirmation">Password(conform)</label>
+				<input type="password-confirmation" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
+				<div class="form__button">
+					<button type="submit" class="button button--inverse">
+						register
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </template>
@@ -45,12 +61,21 @@ export default {
 			loginForm: {
 				email: '',
 				password: ''
+			},
+			registerForm: {
+				name: '',
+				email: '',
+				password: '',
+				password_confirmation: ''
 			}
 		}
 	},
 	methods: {
 		login () {
 			console.log(this.loginForm)
+		},
+		register () {
+			console.log(this.registerForm)
 		}
 	}
 }
