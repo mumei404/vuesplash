@@ -1,4 +1,4 @@
-export function getCookie (searchKey) {
+export function getCookieValue (searchKey) {
 	if (typeof searchKey === 'undefined') {
 		return ''
 	}

@@ -10,3 +10,5 @@ const store = new Vuex.Store({
 		auth
 	}
 })
+
+export default store

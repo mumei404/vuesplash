@@ -42,7 +42,7 @@
 				<label for="password">Password</label>
 				<input type="password" class="form__item" id="password" v-model="registerForm.password">
 				<label for="password-confirmation">Password(conform)</label>
-				<input type="password-confirmation" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
+				<input type="password" class="form__item" id="password-confirmation" v-model="registerForm.password_confirmation">
 				<div class="form__button">
 					<button type="submit" class="button button--inverse">
 						register
@@ -74,8 +74,9 @@ export default {
 		login () {
 			console.log(this.loginForm)
 		},
-		register () {
-			console.log(this.registerForm)
+		async register () {
+			await this.$store.dispatch('auth/register', this.registerForm)
+			this.$router.push('/')
 		}
 	}
 }
